@@ -15,8 +15,27 @@
   </tbody>
 </table>
 
+<h4>Nuevo Post:</h4>
 <%= form_with model: Post.new do |f|%>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
   <%= f.submit :enviar %>
 <% end %>
+
+<h4>Buscador:</h4>
+<form action="<%= posts_path %>">
+  <input name="search">
+</form>
+
+<script>
+  $("[name=search]").keyup(function (e) { 
+    $.ajax({
+      type: "GET",
+      url: "<%= posts_path %>",
+      data: {search: $(this).val()},
+      dataType: "script"
+    });
+  });
+</script>

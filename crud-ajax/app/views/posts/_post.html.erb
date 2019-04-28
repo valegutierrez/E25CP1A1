@@ -1,5 +1,6 @@
-<tr>
+<tr id="post-<%= post.id %>">
 	<td><%= post.title %></td>
+    <td><%= image_tag post.image, height: 50 %></td>
     <td><%= link_to 'Edit Post', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
